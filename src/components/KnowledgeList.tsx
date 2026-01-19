@@ -32,6 +32,9 @@ export const KnowledgeList = ({
       }
 
       // 상태 필터
+      if (filter.status === "pending" && item.is_available !== null) {
+        return false;
+      }
       if (filter.status === "approved" && item.is_available !== true) {
         return false;
       }

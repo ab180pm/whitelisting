@@ -102,10 +102,11 @@ const COLUMN_MAP = {
   is_available: 9,
 } as const;
 
-const parseBoolean = (value: string | undefined): boolean => {
-  // 화이트리스팅: 명시적으로 TRUE인 경우만 사용가능, 나머지는 모두 사용불가
-  if (value === "TRUE" || value === "true" || value === "1") return true;
-  return false;
+const parseBoolean = (value: string | undefined): boolean | null => {
+  if (value === undefined || value === "") return null; // 미검토
+  if (value === "TRUE" || value === "true" || value === "1") return true; // 사용가능
+  if (value === "FALSE" || value === "false" || value === "0") return false; // 사용불가
+  return null;
 };
 
 export const fetchKnowledgeData = async (): Promise<KnowledgeItem[]> => {

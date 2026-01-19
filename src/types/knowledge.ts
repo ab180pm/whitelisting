@@ -8,11 +8,11 @@ export interface KnowledgeItem {
   topic_created_at: string;
   topic_views: number;
   num_post: number;
-  is_available: boolean; // 화이트리스팅: true = 사용가능, false = 사용불가(기본값)
+  is_available: boolean | null; // null = 미검토, true = 사용가능, false = 사용불가
   rowIndex: number; // 시트 내 행 번호 (업데이트용)
 }
 
-export type ReviewStatus = "all" | "approved" | "rejected";
+export type ReviewStatus = "all" | "pending" | "approved" | "rejected";
 
 export interface FilterState {
   category: string | null;

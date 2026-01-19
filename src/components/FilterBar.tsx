@@ -9,6 +9,7 @@ interface FilterBarProps {
 
 const statusOptions: { value: ReviewStatus; label: string }[] = [
   { value: "all", label: "전체" },
+  { value: "pending", label: "미검토" },
   { value: "approved", label: "사용가능" },
   { value: "rejected", label: "사용불가" },
 ];

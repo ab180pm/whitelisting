@@ -16,9 +16,12 @@ export const KnowledgeCard = ({
   onClick,
   isUpdating,
 }: KnowledgeCardProps) => {
-  const statusColor = item.is_available
-    ? "border-l-green-500 bg-green-50/50"
-    : "border-l-red-500 bg-red-50/50";
+  const statusColor =
+    item.is_available === true
+      ? "border-l-green-500 bg-green-50/50"
+      : item.is_available === false
+        ? "border-l-red-500 bg-red-50/50"
+        : "border-l-gray-300 bg-white";
 
   return (
     <div
@@ -45,7 +48,7 @@ export const KnowledgeCard = ({
           onClick={(e) => e.stopPropagation()}
         >
           <button
-            className={`p-2 rounded-lg transition-colors ${
+            className={`p-3 rounded-lg transition-colors ${
               item.is_available === true
                 ? "bg-green-500 text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-green-100 hover:text-green-600"
@@ -54,10 +57,10 @@ export const KnowledgeCard = ({
             disabled={isUpdating}
             title="사용가능"
           >
-            <Check className="w-5 h-5" />
+            <Check className="w-6 h-6" />
           </button>
           <button
-            className={`p-2 rounded-lg transition-colors ${
+            className={`p-3 rounded-lg transition-colors ${
               item.is_available === false
                 ? "bg-red-500 text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600"
@@ -66,7 +69,7 @@ export const KnowledgeCard = ({
             disabled={isUpdating}
             title="사용불가"
           >
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6" />
           </button>
           <a
             href={item.url}
